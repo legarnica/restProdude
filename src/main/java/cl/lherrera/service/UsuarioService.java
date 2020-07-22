@@ -41,8 +41,10 @@ public class UsuarioService {
     }
     
     @Transactional
-    public UsuariosDto eliminar() {
-        return new UsuariosDto();
+    public UsuariosDto eliminar(Usuario usuario) {
+        usuarioDao.delete(usuario);
+
+        return new UsuariosDto(200, Arrays.asList(usuario));
     }
     
     @Transactional(readOnly = true)
