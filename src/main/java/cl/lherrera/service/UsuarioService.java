@@ -34,8 +34,10 @@ public class UsuarioService {
     }
     
     @Transactional
-    public UsuariosDto actualizar() {
-        return new UsuariosDto();
+    public UsuariosDto actualizar(Usuario usuario) {
+        Usuario respuesta = usuarioDao.save(usuario);
+
+        return new UsuariosDto(200, Arrays.asList(respuesta));
     }
     
     @Transactional
@@ -43,8 +45,22 @@ public class UsuarioService {
         return new UsuariosDto();
     }
     
+    @Transactional(readOnly = true)
     public UsuariosDto obtenerUsuario(Integer id) {
         return new UsuariosDto();
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
